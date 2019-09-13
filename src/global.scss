@@ -1,0 +1,196 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+// @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.menu-default {
+    --background: linear-gradient(#7B7B7B,rgba(0, 0, 0, 0.25)); 
+    padding: 1px 0px;
+    ion-menu-button {
+        color:#fff !important;
+        --color:#fff !important;
+    }
+}
+
+
+.swiper-pagination-bullet-active {
+    background:#fff !important;
+    background-color:#fff;
+}
+
+.input-default {
+    background: rgba(0, 0, 0, 0.42);
+    border-radius: 5px;
+    margin: 5px 0px;
+    input {
+        padding: 10px 5px !important;
+    }
+}
+
+.btn-default{
+    --background: linear-gradient(90deg, var(--ion-color-primary) 0%, var(--ion-color-secondary) 100%);
+    .button-native{--background: transparent !important;}
+}
+
+
+.menu-default-search {
+    padding: 0px;
+    margin: 0px;
+    height: 30px;
+    .toolbar-background, .toolbar-container {
+        color: #fff;
+    }
+    ion-searchbar {
+        margin: 0px;
+        padding: 0px;
+        .searchbar-input{
+            box-shadow: none !important;
+            background: rgb(188, 188, 188);
+            color: #fff;
+            border-radius: 0px;
+            padding: 5px 50px;
+        }
+        .searchbar-search-icon {
+            color: #fff;
+        }
+    }
+}
+
+
+
+.alert-wrapper {
+    width: 90% !important;
+    max-width: 90% !important;
+}
+.alert-estado {
+    .alert-head,.alert-button-group {
+        display: none;
+    }
+    .alert-message {
+        padding: 0px;
+        .title,.sub-title {
+            position: relative;
+            text-align: center;
+            margin: 10px 0px;
+            .alert-estado-back{
+                position: absolute;
+                left: 10px;
+                display: none;
+            }
+        }
+        .executivo {
+            background: #59EFBB;
+        }
+        .legislativo {
+            background: #31BABF;
+        }
+        .action {
+            display: flex;
+            justify-content: space-between;
+
+            .tipo-action {
+                padding: 15px 0px;
+                color: #fff;
+                width: 100%;
+                text-align: center;
+            }
+        }
+        .menu {
+            color: #fff;
+            display: none;
+            margin: 0px;
+            padding: 0px;
+            max-height: 100px;
+            overflow: auto;
+            p {
+                text-align: center;
+                border-bottom: 1px solid #fff;
+                margin: 0px;
+                padding: 15px;
+                margin: 0px 15px;
+            }
+        }
+
+        .politicos {
+            display: none;
+            .politico{
+                display: flex;
+                padding: 10px 0px;
+                align-items: center;
+                justify-content: space-between;
+                .info {
+                    padding: 0px 5px;
+                    p {
+                        margin: 5px;
+                    }
+                }
+                .foto {
+                    margin-left: 5px;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 10px;
+                    box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+                }
+                .politico-action {
+                    display: flex;
+                    .voto {
+                        display: none;
+                        color: #fff;
+                        padding: 8px;
+                        ion-icon {
+                            font-size: 2.3em;
+                        }
+                        box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+                
+
+                        &.radius:nth-child(1) {
+                            border-radius: 5px 0px 0px 5px;
+                        }
+                        &.radius:nth-child(2) {
+                            border-radius: 0px 0px 0px 0px;
+                        }
+                    
+                        &.open {
+                            display: block;
+                        }
+                        &.positivo {
+                            background: #30E578;
+                        }
+                        &.negativo {
+                            background: #E87373;
+                        }
+                    }
+                }
+            }   
+        }
+    }
+}
+
+
+.ios.segment-button-has-label{
+    border-radius: 0px; 
+}

@@ -1,0 +1,60 @@
+<ion-content fullscreen scroll-y="false">
+    <!-- <video autoplay muted loop>
+      <source src="../../../assets/30280996-preview.mp4" type="video/mp4"> 
+    </video> -->
+    <ion-slides #slides pager="true" [options]="slideOpts">
+      <ion-slide>
+        <div class="mask" padding>
+            <h3 class="title">
+              <p>Seja bem-vindo ao <b>Vota </b></p>
+              <p><b>Brasil,</b> o aplicativo da</p>
+              <p>democracia participativa.</p>
+            </h3>
+
+            <p class="sub-title">
+              Conheça a ferramenta da democracia participativa.Encontre seu político e vote no seu trabalho. 
+            </p>
+
+            <ion-row class="slide-footer">
+              <ion-col size="10"></ion-col>
+              <ion-col size="2" (click)="page(true)"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+            </ion-row>
+        </div>
+      </ion-slide>
+
+      <ion-slide>
+          <div class="mask" padding>
+            <h3 class="title" style="height: 200px"></h3>
+
+            <p class="sub-title">
+              Informe-se sobre os principais temas de destaque no Brasil e registre sua opnião ou comentário. Vote e conheça os resultados. 
+            </p>
+
+            <ion-row class="slide-footer">
+              <ion-col size="2" (click)="page(false)"><ion-icon name="arrow-back"></ion-icon></ion-col>
+              <ion-col size="8"></ion-col>
+              <ion-col size="2" (click)="page(true)"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+            </ion-row>
+        </div>
+      </ion-slide>
+
+
+      <ion-slide>
+          <div class="mask" padding>
+            <h3 class="title" style="height: 200px"></h3>
+
+            <p class="sub-title">
+              Crie sua própria enquete e acompanhe o resultado da votação. Conheça as matérias que estão em pauta no Congresso Nacional e através do registro do seu voto influencie a decisão do seu. 
+            </p>
+
+            <ion-row class="slide-footer">
+              <ion-col size="2" (click)="page(false)"><ion-icon name="arrow-back"></ion-icon></ion-col>
+              <ion-col size="8"></ion-col>
+              <ion-col size="2" (click)="login()"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+            </ion-row>
+        </div>
+      </ion-slide>
+
+
+    </ion-slides>
+  </ion-content>

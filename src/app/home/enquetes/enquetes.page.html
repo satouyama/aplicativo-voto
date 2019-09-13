@@ -1,0 +1,43 @@
+<app-menu-component [nog1]="true"></app-menu-component>
+<ion-content>
+
+    <section style="height: 160px; padding-top: 15px">
+        <ion-slides>
+            <ion-slide *ngFor="let enquete of dados?.data?.sugestao">
+                <app-enqueteitem style="width: 100%" [enquete]="enquete"></app-enqueteitem>
+            </ion-slide>
+        </ion-slides>
+    </section>
+    <section class="segmento-enquetes">
+        <ion-segment [(ngModel)]="segmento">
+            <ion-segment-button value="sugeridas" checked>
+                <ion-label style="font-size: 0.8em">Sugeridas</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="suasenquetes">
+                <ion-label style="font-size: 0.8em">Suas Enquetes ({{dados?.data?.minhas?.length}})</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </section>
+
+    <section>
+        <section *ngIf="segmento === 'sugeridas'">
+            <ion-list>
+                <app-enqueteitem *ngFor="let enquete of dados?.data?.sugestao" [enquete]="enquete"></app-enqueteitem>
+            </ion-list>
+        </section>
+        <section *ngIf="segmento === 'suasenquetes'">
+            <ion-list>
+                <app-enqueteitem *ngFor="let enquete of dados?.data?.minhas" [enquete]="enquete"></app-enqueteitem>
+            </ion-list>
+        </section>
+    </section>
+
+
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="success" (click)="newEnquete()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+            
+</ion-content>

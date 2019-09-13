@@ -1,0 +1,36 @@
+
+<ion-header no-border no-line>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="fechar()" color="light">
+          <ion-icon name="arrow-back" style="color: rgb(75, 75, 75)"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title texte-center>Politico: {{relacao?.nome}}</ion-title> 
+      <ion-buttons slot="end">
+        <ion-button *ngIf="relacao?.editar" (click)="editar()" color="primary">
+            <ion-icon name="create"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+    
+  <ion-content padding>
+  
+      <ion-text color="secondary">
+        <h1 text-center>Deixe seu comentário</h1>
+      </ion-text>
+      
+      <ion-item>
+        <ion-textarea [(ngModel)]="comentario.descricao" rows="6" placeholder="Escreve aqui..."></ion-textarea>
+      </ion-item>
+  
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col text-center>
+          <ion-button color="primary" (click)="salvar()">Comentar</ion-button>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+  </ion-content>
+  

@@ -1,0 +1,48 @@
+
+
+
+
+
+<ion-header no-border no-line>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="fechar()" color="light">
+        <ion-icon name="arrow-back" style="color: rgb(75, 75, 75)"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title texte-center>Documento</ion-title> 
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content padding>
+  
+  <ion-text color="primary">
+    <h2 text-center>Selecione um documento</h2>
+  </ion-text>
+  <div class="upload-btn-wrapper">
+    <ion-row>
+      <ion-col text-center>
+        <ion-button color="secondary"size="large">
+          <ion-icon name="document"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    
+    <input type="file" name="doc" class="custom-file-input" ng2FileSelect [uploader]="uploader" />
+  </div>
+  
+
+  <br><br>
+  <ion-progress-bar *ngIf="uploader?.getNotUploadedItems()?.length" value="{{uploader.progress}}"></ion-progress-bar>
+
+  <br>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="full" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+        SALVAR
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
+

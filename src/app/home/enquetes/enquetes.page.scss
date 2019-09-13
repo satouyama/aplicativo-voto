@@ -1,0 +1,12 @@
+
+
+.segmento-enquetes {
+    border-top: 15px solid var(--ion-color-primary,#3880ff);
+    ion-segment-button {
+        min-height: 15px;
+        ion-label {
+            margin: 2px 0px ;
+            padding: 2px 0px;
+        }
+    }
+}

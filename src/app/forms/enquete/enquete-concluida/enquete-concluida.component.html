@@ -1,0 +1,42 @@
+<ion-header no-border no-line>
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="fechar()" color="light">
+          <ion-icon name="close" style="color: rgb(75, 75, 75)"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+    
+
+  <ion-content>
+
+    <ion-text color="success">
+      <h4 text-center>Enquete criada com sucesso!</h4>
+    </ion-text>
+    <ion-row text-center>
+      <ion-col text-center>
+        <img src="../../assets/survey2.svg" alt="" width="100">
+      </ion-col>
+    </ion-row>
+    <p text-center style="font-size: 0.8em; color: #7C7C7C;">Compartilhe sua enquete para começar a receber opiniões.</p>
+    
+    <div *ngIf="enquete?.link">
+      <br>
+      <p text-center style="font-size: 0.5em; color: #7C7C7C;">Clique para ir ao link</p>
+      <ion-row style="background-color: #F7F7F7">
+        <ion-col text-center>
+            <a href="{{enquete?.link}}" expand="full" fill="clear" color="dark" target="_blank">Link</a>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <br>
+    <p text-center style="font-size: 0.8em; color: #7C7C7C;">Compartilhe!</p>
+    <ion-row text-center>
+      <ion-col text-center (click)="compartilhar()">
+          <img src="../../assets/share-alt-solid.svg" alt="" width="30">
+      </ion-col>
+    </ion-row>
+      
+  </ion-content>

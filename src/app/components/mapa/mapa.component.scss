@@ -1,0 +1,36 @@
+
+.filter {
+    position: fixed;
+    z-index: 99999999;
+    // background: #bcbcbc;
+    right: 0px;
+    top: 74px;
+    padding: 10px;
+    color: #fff;
+}
+.mapa {
+    position: relative;
+    height: 460px;
+    background: #F1F1F1;
+    margin-bottom: -60px;
+    &.ios { 
+        top: 35px;
+    }
+    svg {
+        position: absolute;
+        top: 15px;
+        width: calc(100% - 30px);
+    }
+    #svg-map-border {
+        top: 25px;
+        left: 10px;
+    }
+    #svg-map-border path { stroke:#2f5461; fill:#2f5461 }
+    #svg-map path { fill:#55747E }
+    #svg-map text { fill:#fff; font:12px Arial-BoldMT, sans-serif; cursor:pointer }
+    #svg-map a{ text-decoration:none }
+    #svg-map a:hover { cursor:pointer; text-decoration:none }
+    #svg-map a:hover path{ fill:rgb(47, 84, 97)!important }
+    #svg-map .circle { fill:#55747E }
+    #svg-map a:hover .circle { fill:rgb(47, 84, 97)!important; cursor:pointer }
+}

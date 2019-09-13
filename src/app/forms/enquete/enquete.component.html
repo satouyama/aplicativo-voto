@@ -1,0 +1,98 @@
+<ion-header no-border no-line>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="fechar()" color="light">
+        <ion-icon name="arrow-back" style="color: rgb(75, 75, 75)"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title texte-center>Nova Enquete</ion-title> 
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content>
+  
+    <ion-item>
+      <ion-label position="floating">Titulo</ion-label>
+      <ion-input [(ngModel)]="enquete.titulo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Tema</ion-label>
+      <ion-select [(ngModel)]="enquete.tema_id" >
+        <ion-select-option *ngFor="let tema of temas" value="{{tema?.id}}">{{tema?.titulo}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Texto</ion-label>
+      <ion-textarea rows="5" [(ngModel)]="enquete.descricao"></ion-textarea>
+    </ion-item>
+
+    <ion-row class="row-alcance">
+      <ion-col no-padding class="alcance-text">Alcance</ion-col>
+      <ion-col size="6" no-padding color="success" class="btn-alcance">
+        <ion-button size="small" fill="clear" (click)="addAlcance()">Adicionar Região</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="enquete?.estado_nome" padding text-center>
+     <ion-col size="2"></ion-col>
+     <ion-col>
+        <ion-button expand="full" color="light" (click)="removeAlcance()">
+          {{enquete?.estado_nome}}
+          <ion-icon slot="end" name="close"></ion-icon>
+        </ion-button>
+     </ion-col>
+     <ion-col size="2"></ion-col>
+    </ion-row>
+
+
+    <ion-item>
+      <ion-col>Prazo de ecerramento</ion-col>
+      <ion-col size="4">
+        <ion-datetime [(ngModel)]="enquete.ate" displayFormat="DD/MM/YYYY" placeholder="DD/MM/YYYY"></ion-datetime>
+      </ion-col>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-col size="10">Link para fonte</ion-col>
+      <ion-col>
+        <ion-button size="small" color="success" (click)="addFonte()">
+            <ion-icon name="add"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-item>
+
+    <ion-list>
+        <ion-item *ngIf="enquete?.link">
+          <ion-label>
+            <h2>{{enquete?.link}}</h2>
+          </ion-label>
+          <ion-button fill="outline" slot="end" (click)="enquete.link = null">Remove</ion-button>
+        </ion-item>
+        <ion-item *ngFor="let arquivo of enquete?.arquivos">
+          <a href="{{uploads(arquivo?.caminho)}}" target="_blank" *ngIf="arquivo?.caminho">
+            <ion-label>
+              <h2>{{arquivo?.nome?.split('.')[0]}}</h2>
+            </ion-label>
+          </a>
+          <ion-button fill="outline" slot="end" (click)="removeArquivo(arquivo)">Remove</ion-button>
+        </ion-item>
+    </ion-list>
+
+    <ion-row padding>
+      <ion-col size="1">
+          <ion-checkbox [(ngModel)]="enquete.anonimo"></ion-checkbox>
+      </ion-col>
+      <ion-col>Enquete Anônima</ion-col>
+    </ion-row>
+  </ion-content>
+
+  <ion-footer no-border no-line>
+    <ion-row>
+      <ion-col>
+        <ion-button class="btn-default" expand="block" (click)="salvar()">Criar Enquete</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-footer>

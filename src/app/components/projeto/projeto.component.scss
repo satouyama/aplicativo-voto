@@ -1,0 +1,23 @@
+
+.projeto {
+    .autor {
+        color: #ccc;
+        background: #F7F7F7;
+        margin: 0;
+        padding: 3px 0px;
+        padding-left: calc(var(--padding-start) + var(--ion-safe-area-left, 0px));
+        font-size: 0.8em;
+    }
+    ion-label {
+        font-size: 0.9em;
+    }
+    .votar {
+        --ion-button-round-border-radius: 50%;
+        --ion-button-border-radius: 50%;
+        --ion-border-radius: 50%;
+        --border-radius: 50%;
+        width: 50px;
+        font-size: 0.6em;
+        height: 50px;
+    }
+}

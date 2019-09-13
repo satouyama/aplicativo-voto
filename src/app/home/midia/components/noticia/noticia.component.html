@@ -1,0 +1,24 @@
+
+<ion-header no-border no-line>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="fechar()" color="light">
+          <ion-icon name="arrow-back" style="color: rgb(75, 75, 75)"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title texte-center>Notícia: {{noticia?.titulo}}</ion-title> 
+      <ion-buttons slot="end">
+        <ion-button *ngIf="noticia?.editar" (click)="editar()" color="primary">
+            <ion-icon name="create"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+    
+  <ion-content>
+  
+    <section style="height: 160px">
+      <app-noticiaitem-component [v2]="true" [noticia]="noticia"></app-noticiaitem-component>
+    </section>
+              
+  </ion-content>

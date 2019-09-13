@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "728028718468",
+    "firebase_url": "https://votabrasilapp.firebaseio.com",
+    "project_id": "votabrasilapp",
+    "storage_bucket": "votabrasilapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:728028718468:android:8fb845ebb23c3429",
+        "android_client_info": {
+          "package_name": "app.vbpaulo.votabrasil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "728028718468-9tdl7ded3q0ke82at5qb5gir8bvl65td.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.vbpaulo.votabrasil",
+            "certificate_hash": "8e5df01a8841286d26ec59fb0bcccb6f595afc9f"
+          }
+        },
+        {
+          "client_id": "728028718468-dsls2159snciarqu5v62amoejuec179t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-CUKLaF2Sa7mI0-oidwlKyR81AKJa95c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "728028718468-dsls2159snciarqu5v62amoejuec179t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

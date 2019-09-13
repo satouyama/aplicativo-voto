@@ -1,0 +1,68 @@
+<ion-header no-border no-line>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="fechar()" color="light">
+        <ion-icon name="arrow-back" style="color: rgb(75, 75, 75)"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="padding-right: 15%;">
+      <h3 text-center>{{dados?.estado?.nome}}</h3>
+      <p text-center>{{dados?.estado?.populacao || 0}} eleitores</p>
+    </ion-title> 
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content>
+  
+  <div class="busca">
+    <ion-searchbar no-border no-boxshadow (ionInput)="filtrar($event)" placeholder="Pesquisar por nome"></ion-searchbar>
+  </div>
+  
+
+  <ion-list>
+    <ion-item class="politico" *ngFor="let politico of dados?.politicos_top; let index = i">
+      <ion-thumbnail slot="start" (click)="politicoPerfil(politico)">
+        <img [src]="politico?.foto_link">
+      </ion-thumbnail>
+      <ion-label text-wrap (click)="politicoPerfil(politico)">
+        <h3>{{politico?.nome}}</h3>
+        <p style="font-size: 0.7em;">
+          <span>{{politico?.cargo?.titulo}}</span>
+          <span *ngIf="politico?.cargo?.titulo && politico?.partido?.sigla">,</span>
+          <span>{{politico?.partido?.sigla}}</span>
+        </p>
+      </ion-label>
+
+      <div slot="end">
+        <ion-button color="success" class="btn_votar" (click)="votar(1,politico,index)" [disabled]="politico?.votacao?.voto === 1">
+          <ion-icon name="thumbs-up"></ion-icon>
+        </ion-button>
+        <ion-button color="danger" class="btn_votar" (click)="votar(2,politico,index)" [disabled]="politico?.votacao?.voto === 2">
+          <ion-icon name="thumbs-down"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+  </ion-list>
+
+    
+  <section class="secao_slide" padding>
+    <ion-slides #slides pager="false" [options]="slideOpts" (ionWillChange)="slideWillChange()">
+      <ion-slide *ngFor="let politico of dados?.politicos; let index = i">
+        <div class="politico-slide">
+          <img [src]="politico?.foto_link" class="foto_link">
+          <p>{{politico?.nome}}</p>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </section>
+
+  <div slot="end">
+    <ion-button color="success" class="btn_votar" (click)="votar(1,politico,index)" [disabled]="politico?.votacao?.voto === 1">
+      <ion-icon name="thumbs-up"></ion-icon>
+    </ion-button>
+    <ion-button color="danger" class="btn_votar" (click)="votar(2,politico,index)" [disabled]="politico?.votacao?.voto === 2">
+      <ion-icon name="thumbs-down"></ion-icon>
+    </ion-button>
+  </div>
+
+</ion-content>

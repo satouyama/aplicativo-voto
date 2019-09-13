@@ -1,0 +1,30 @@
+
+<ion-header no-border no-line>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="fechar()" color="light">
+        <ion-icon name="arrow-back" style="color: rgb(75, 75, 75)"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title texte-center>Enquete: {{enquete?.titulo}}</ion-title> 
+    <ion-buttons slot="end">
+      <ion-button *ngIf="enquete?.editar" (click)="editar()" color="primary">
+          <ion-icon name="create"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content>
+
+  <section style="height: 160px">
+    <app-enqueteitem 
+      [enquete]="enquete" 
+      [hidevote]="true" 
+      [votev2]="true" 
+      [clickusuario]="true"
+      [classExtra]="'bordarazul'"
+      ></app-enqueteitem>
+  </section>
+            
+</ion-content>

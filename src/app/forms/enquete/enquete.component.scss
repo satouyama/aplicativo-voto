@@ -1,0 +1,16 @@
+
+
+.row-alcance {
+    .alcance-text {
+        display: flex;
+        align-items: center;
+        background: #F0F0F0;
+        padding: 0px 15px;
+    }
+    .btn-alcance {
+        background: #10dc60;
+        ion-button {
+            color: #fff;
+        }
+    }
+}

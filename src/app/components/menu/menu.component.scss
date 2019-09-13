@@ -1,0 +1,50 @@
+
+
+.list-menu {
+    align-items: center;
+    background: #fff;
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    border-radius: 0px 0px 0px 10px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+
+    &.ios {
+        margin-left: 50px;
+        text-align: left;
+        padding: 0px;
+    }
+}
+.status-user {
+    position: relative;
+    width: 30px;
+    ion-badge {
+        position: absolute;
+        color: #10dc60;
+        height: 10px;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        width: 10px;
+        right: 0px;
+        top: 0px;
+    }
+    ion-avatar {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.menu-default-g1 {
+    align-items: center;
+    ion-col {
+        padding: 0px 10px;
+    }
+    .icon-g1 {
+        width: 30px;
+    }
+    .text {
+        color: #C31500;
+        font-size: 0.8em;
+    }
+}

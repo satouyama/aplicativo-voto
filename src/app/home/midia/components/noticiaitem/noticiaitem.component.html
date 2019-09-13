@@ -1,0 +1,111 @@
+
+
+
+<section class="noticia">
+  <ion-item lines="none">
+    <ion-thumbnail (click)="verNoticia(noticia)" *ngIf="noticia?.midia" slot="start">
+      <img [src]="noticia?.midia">
+    </ion-thumbnail>
+    <ion-label (click)="verNoticia(noticia)" text-wrap [innerHtml]="noticia?.descricao?.substring(0,100)"></ion-label>
+    <!-- <ion-button *ngIf="!v2" color="{{noticia?.votacao?.id ? noticia?.votacao?.voto === 1 ? 'secondary' : 'danger' : 'light'}}" class="votar" 
+        (click)="votar(noticia?.votacao?.voto === 1 ? 2 : 1)">
+        <ion-icon *ngIf="noticia?.votacao?.id && noticia?.votacao?.voto === 1" name="thumbs-up"></ion-icon>
+        <ion-icon *ngIf="noticia?.votacao?.id && noticia?.votacao?.voto === 2" name="thumbs-down"></ion-icon>
+        <span *ngIf="!noticia?.votacao?.id">VOTO</span>
+    </ion-button> -->
+  </ion-item>
+  <ion-row style="font-size: 0.8em;" class="ion-padding-horizontal">
+    <ion-col>{{noticia?.data}}</ion-col>
+    <!-- <ion-col text-right>{{noticia?.votos}} votos</ion-col> -->
+  </ion-row>
+  <p *ngIf="!v2" class="autor" padding>-</p>
+</section>
+
+  
+<section *ngIf="v2" class="votev2">
+    
+    <!-- <ion-row class="votar">
+        <ion-col class="btn_botat_v2">
+            <ion-button color="{{noticia?.votacao?.id && noticia?.votacao?.voto === 1 ? 'success' :  'light'}}" expand="full" (click)="votar(1)">
+                <ion-icon name="thumbs-up"></ion-icon>
+            </ion-button>
+        </ion-col>
+        <ion-col class="btn_botat_v2">
+            <ion-button color="light" disabled  expand="full">
+                <ion-icon name="help"></ion-icon>
+            </ion-button>
+        </ion-col>
+        <ion-col class="btn_botat_v2">
+            <ion-button color="{{noticia?.votacao?.id && noticia?.votacao?.voto === 2 ? 'danger' :  'light'}}" expand="full" (click)="votar(2)">
+                <ion-icon name="thumbs-down"></ion-icon>
+            </ion-button>
+        </ion-col>
+    </ion-row> -->
+
+
+
+    <section class="segmento-enquetes">
+        <ion-segment (ionChange)="selecionarSegmento($event)">
+            <ion-segment-button value="completa" checked>
+                <ion-label style="font-size: 0.8em">Notícia</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="atividade">
+                <ion-label style="font-size: 0.8em">Atividade ({{noticia?.atividades?.length || 0}})</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="comentarios">
+                <ion-label style="font-size: 0.8em">Comentarios ({{noticia?.comentarios?.length || 0}})</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </section>
+    
+    <section *ngIf="segmento === 'completa'" class="segmento-completa" padding>
+      <div [innerHtml]="noticia?.descricao" style="text-align: justify"></div>
+      <br>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col><ion-button href="{{noticia?.link}}" color="light" expand="block">Ver mais</ion-button></ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </section>
+    <section *ngIf="segmento === 'atividade'" class="segmento-atividade">
+        <ion-list>
+            <ion-item *ngFor="let atividade of noticia?.atividades">
+                <ion-avatar slot="start">
+                    <img src="{{atividade?.foto}}">
+                </ion-avatar>
+                <ion-label>
+                    <h3 style="font-weight: bolder">{{atividade?.nome}}</h3>
+                    <p *ngIf="atividade?.tipo === 1">{{atividade?.descricao}}</p>
+                    <ion-text *ngIf="atividade?.tipo === 2" color="{{atividade?.voto === 1 ? 'success' : atividade?.voto === 2 ? 'danger' : ''}}">
+                        <p>{{atividade?.descricao}}</p>
+                    </ion-text>
+                </ion-label>
+                <p slot="end">
+                    {{atividade?.tempo}}
+                </p>
+            </ion-item>
+        </ion-list>
+    </section>
+    <section *ngIf="segmento === 'comentarios'" class="segmento-comentarios">
+        <div class="btn_botat_v2">
+            <ion-button color="success" expand="full" size="small" (click)="comentarNovo()">
+                Deixar um comenatrio
+            </ion-button>
+        </div>
+        <ion-list>
+            <ion-item *ngFor="let comentario of noticia?.comentarios" (click)="comentarAtualizar(comentario)">
+                <ion-avatar slot="start">
+                    <img src="{{comentario?.usuario?.foto}}">
+                </ion-avatar>
+                <ion-label>
+                    <h3 style="font-weight: bolder">{{comentario?.usuario?.nome}}</h3>
+                    <p>{{comentario?.descricao}}</p>
+                </ion-label>
+                <p slot="end">
+                    {{comentario?.tempo}}
+                </p>
+            </ion-item>
+        </ion-list>
+    </section>
+    
+</section>

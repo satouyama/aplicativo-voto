@@ -1,0 +1,95 @@
+
+.header-usuario {
+    background-color: #F1F1F1;
+    .painel-usuario {
+        color: transparent;
+        width: 100%;
+        height: 120px;
+        background-size: 100%;
+        opacity: 0.7;
+        background-repeat: no-repeat;   
+        background-position-y: 30%; 
+        .mask {
+            width: 100%;
+            height: 100%;
+            background: #bdbdbd96;
+        }
+    }
+
+    .info-usuario {
+        display: flex;
+        height: 70px;
+        position: relative;
+        top: -10px;    
+        .detail-usuario {
+            position: relative;
+            top: -20px;
+            .img-usuario {
+                border-radius: 50%;
+                border: 3px solid #fff;
+                width: 80px;
+                height: 80px;
+                box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12);
+            }
+        }
+    }
+    .location-usuario {
+        padding-bottom: 15px;
+        h4,p {
+            color: #868686;
+            margin: 2px 0px;
+        }
+    }
+    .ideologia-text {
+        background: #fff;
+        border-radius: 5px;
+        font-size: 0.8em;
+        text-align: justify;
+        box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12);
+    }
+}
+
+.segmento-enquetes {
+    ion-segment-button {
+         min-height: 15px;
+         ion-label {
+             margin: 2px 0px ;
+             padding: 2px 0px;
+         }
+     }
+ }
+
+
+ .editar-perfil {
+     .foto_usuario {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        padding: 3px;
+        border: 1px solid #ccc;
+        box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12);
+     }
+
+     .btn-instagram {
+        --background: #f09433; 
+        --background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+        --background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+        --background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+        color: #fff; 
+     }
+
+     .btn-twitter {
+        --background: #00ACEE;
+     }
+ }
+
+
+ .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+  

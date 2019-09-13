@@ -1,0 +1,62 @@
+
+
+.busca {
+    ion-searchbar {
+        padding: 0px;
+    }
+}
+
+.politico {
+    .item-native {
+        .item-inner {
+            padding: 0px;
+        }
+    }
+}
+
+
+.btn_votar {
+    --border-radius: 50%;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1em;
+
+    &.small {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+
+.btn_botat_v2 {
+    margin: 0px;
+    padding: 0px;
+    ion-button {
+        margin: 0px;
+        --border-radius: 0px;
+        border-radius: 0px;
+        box-shadow: none;
+        --box-shadow:none;
+    }
+}
+
+
+.secao_slide {
+    background: #f5f5f5;
+    .ion-slides {
+        margin: 0px 5px;
+    }
+    .politico-slide {
+        img.foto_link {
+            width: 60px;
+            height: 60px;        
+            border-radius: 5px;
+            box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12);
+        }
+        p {
+            font-size: 0.5em;
+            margin: 0px;
+        }
+    }
+}

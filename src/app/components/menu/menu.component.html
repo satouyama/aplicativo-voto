@@ -1,0 +1,43 @@
+
+
+<ion-header no-border class="md">
+    <ion-toolbar class="menu-default md">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+
+        <ion-title class="list-menu md">
+            <ion-button color="dark" fill="clear" (click)="home()">
+                <ion-icon class="icon-home" name="home" style="font-size: 2em;color: #BCBCBC;" ></ion-icon>
+            </ion-button>
+        </ion-title>
+
+        <ion-buttons slot="end">
+            <ion-button color="dark" fill="clear">
+                <div class="status-user" (click)="meuPerfil()">
+                    <ion-badge color="success">O</ion-badge>
+                    <ion-avatar>
+                        <img *ngIf="usuario?.foto" src="{{usuario?.foto}}">
+                    <img *ngIf="usuario?.foto == null" width="50" src="./assets/default.png">
+                    </ion-avatar> 
+                </div>   
+            </ion-button>
+            <ion-button color="dark" fill="clear">
+                <ion-icon class="icon-menu" name="md-more"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        
+    </ion-toolbar>
+
+    <ion-row *ngIf="!nog1" class="menu-default-g1">
+        <ion-col size="2"><img class="icon-g1" src="./assets/g1.png" alt=""></ion-col>
+        <ion-col>
+            <p class="text">Telegram avisou Alexandre de Morais</p>
+        </ion-col>
+    </ion-row>
+    <div class="menu-default-search">
+        <ion-searchbar placeholder="Pesquise por nome, cargo ou estado" no-boxshadow></ion-searchbar>
+    </div>
+</ion-header>
+
+

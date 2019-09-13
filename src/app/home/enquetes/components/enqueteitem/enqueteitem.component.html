@@ -1,0 +1,103 @@
+
+<p class="auto">Autor: {{enquete?.usuario?.nome}}</p>
+<section class="item-enquete {{classExtra}}" padding>
+    <ion-item lines="none" no-padding>
+        <ion-thumbnail style="margin: 0px 5px" (click)="verEnquete(enquete)">
+            <img *ngIf="enquete.usuario.foto == null" width="50" src="{{enquete?.usuario?.foto}}">
+            <img *ngIf="enquete.usuario.foto" width="50" src="./assets/default.png">
+        </ion-thumbnail>
+        <ion-label text-wra (click)="verEnquete(enquete)">
+            <h2>{{enquete?.titulo}}</h2>
+        </ion-label>
+    
+    </ion-item>
+    <ion-row style="font-size: 0.8em; color: #7C7C7C">
+        <ion-col>   
+            Fonte: 
+            <img src="./assets/external-link-alt-solid.svg" alt="" width="15" style="margin: 0px 5px">
+            <img src="./assets/_ionicons_svg_ios-attach.svg" alt="" width="8" style="margin: 0px 5px">
+        </ion-col>
+        <ion-col size="2"></ion-col>
+        <ion-col>{{enquete?.restante}} dias restantes</ion-col>
+    </ion-row>
+</section>
+
+<section *ngIf="votev2" class="votev2">
+    
+    <ion-row class="votar">
+        <ion-col class="btn_botat_v2">
+            <ion-button color="{{enquete?.votacao?.id && enquete?.votacao?.voto === 1 ? 'success' :  'light'}}" expand="full" (click)="votar(1)">
+                <ion-icon name="thumbs-up"></ion-icon>
+            </ion-button>
+        </ion-col>
+        <ion-col class="btn_botat_v2">
+            <ion-button color="light" disabled  expand="full">
+                <ion-icon name="help"></ion-icon>
+            </ion-button>
+        </ion-col>
+        <ion-col class="btn_botat_v2">
+            <ion-button color="{{enquete?.votacao?.id && enquete?.votacao?.voto === 2 ? 'danger' :  'light'}}" expand="full" (click)="votar(2)">
+                <ion-icon name="thumbs-down"></ion-icon>
+            </ion-button>
+        </ion-col>
+    </ion-row>
+
+
+
+    <section class="segmento-enquetes">
+        <ion-segment [(ngModel)]="segmento">
+            <ion-segment-button value="atividade" checked>
+                <ion-label style="font-size: 0.8em">Atividade ({{enquete?.atividades?.length}})</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="comentarios">
+                <ion-label style="font-size: 0.8em">Comentarios ({{enquete?.comentarios?.length}})</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </section>
+    
+    <section *ngIf="segmento === 'atividade'" class="segmento-atividade">
+        <ion-list>
+            <ion-item *ngFor="let atividade of enquete?.atividades">
+                <ion-avatar slot="start">
+                    <img src="{{atividade?.foto}}">
+                </ion-avatar>
+                <ion-label>
+                    <h3 style="font-weight: bolder">{{atividade?.nome}}</h3>
+                    <p *ngIf="atividade?.tipo === 1">{{atividade?.descricao}}</p>
+                    <ion-text *ngIf="atividade?.tipo === 2" color="{{atividade?.voto === 1 ? 'success' : atividade?.voto === 2 ? 'danger' : ''}}">
+                        <p>{{atividade?.descricao}}</p>
+                    </ion-text>
+                </ion-label>
+                <p slot="end">
+                    {{atividade?.tempo}}
+                </p>
+            </ion-item>
+        </ion-list>
+    </section>
+    <section *ngIf="segmento === 'comentarios'" class="segmento-comentarios">
+        <div class="btn_botat_v2">
+            <ion-button color="success" expand="full" size="small" (click)="comentarNovo()">
+                Deixar um comenatrio
+            </ion-button>
+        </div>
+
+
+        <ion-list>
+            <ion-item *ngFor="let comentario of enquete?.comentarios" (click)="comentarAtualizar(comentario)">
+                <ion-avatar slot="start">
+                    <img *ngIf="comentario?.usuario?.foto" src="{{comentario?.usuario?.foto}}">
+                    <img *ngIf="comentario?.usuario?.foto == null" width="50" src="./assets/default.png">
+                </ion-avatar>
+                <ion-label>
+                    <h3 style="font-weight: bolder">{{comentario?.usuario?.nome}}</h3>
+                    <p>{{comentario?.descricao}}</p>
+                </ion-label>
+                <p slot="end">
+                    {{comentario?.tempo}}
+                </p>
+            </ion-item>
+        </ion-list>
+    </section>
+    
+</section>
+

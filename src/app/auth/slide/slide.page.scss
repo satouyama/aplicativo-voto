@@ -1,0 +1,45 @@
+
+  video {
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: -150%;
+  }
+  
+  ion-slide {
+    background-image: url('../../../assets/photo-1559605948-3a76fa37a6b6/photo-1559605948-3a76fa37a6b6.png') !important;
+    -webkit-background-image: url('../../../assets/photo-1559605948-3a76fa37a6b6/photo-1559605948-3a76fa37a6b6.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+
+    .mask {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        // font-family: 'Open Sans', sans-serif;
+        background: rgba(0, 0, 0, 0.30);
+        height: 100%;
+        color: #fff;
+
+        .title {
+            font-weight: 300;
+            p {
+                margin: 3px 0px; 
+            }
+        }
+
+        .sub-title {
+            font-weight: 280;
+            padding-top: 300px !important;
+          
+            
+        }
+
+        .slide-footer {
+            ion-icon {
+                font-size: 1.5em;
+            }
+        }
+    }
+}

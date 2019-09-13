@@ -1,0 +1,194 @@
+
+
+
+<ion-header no-border no-line *ngIf="editar">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+        <ion-button (click)="editar =! editar" color="light">
+            <ion-icon name="arrow-back" style="color: rgb(75, 75, 75)"></ion-icon>
+        </ion-button>
+        </ion-buttons>
+        <ion-title texte-center>Usuário: {{usuario?.nome}}</ion-title> 
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+    <section *ngIf="!editar">        
+        <div class="header-usuario">
+          <div class="painel-usuario" [ngStyle]="{'background-image':'url('+usuario?.foto+')'}">
+            <div class="mask">
+                <ion-button fill="clear" (click)="fechar()" color="light">
+                  <ion-icon name="arrow-back" style="color: rgb(75, 75, 75)"></ion-icon>
+                </ion-button>
+            </div>
+          </div>
+          <div class="info-usuario">
+          
+            <ion-col class="detail-usuario" style="display: flex; justify-content: center">
+                <img *ngIf="usuario.foto" class="img-usuario" src="{{usuario?.foto}}">
+                <img *ngIf="usuario.foto == null" class="img-usuario" src="../assets/default.png">
+                
+            </ion-col>
+            <ion-col align-self-center text-center>
+              <ion-button (click)="seguir()" size="small" color="primary" *ngIf="!usuario?.editar">
+                {{follow}}
+                <ion-icon name="logo-rss" slot="end"></ion-icon>
+              </ion-button>
+              <ion-button size="small" color="primary" *ngIf="usuario?.editar" (click)="editar =! editar">Editar</ion-button>
+            </ion-col>
+          </div>
+          <div class="location-usuario">
+              <h4 text-center>{{usuario?.nome}}</h4>
+              <p text-center *ngIf="usuario?.endereco">
+                <ion-icon name="pin"></ion-icon>
+                {{usuario?.endereco?.cidade?.nome}}
+                {{usuario?.endereco?.cidade?.estado?.nome}}
+              </p>
+          </div>
+          <ion-row *ngIf="ideologia" padding>
+            <ion-col class="ideologia-text" padding (click)="ideologia =! ideologia">
+                {{usuario?.ideologia}}
+            </ion-col>
+          </ion-row>    
+        </div>
+        <section class="segmento-enquetes">
+            <ion-segment [(ngModel)]="segmento">
+                <ion-segment-button value="politico" checked>
+                    <ion-label style="font-size: 0.8em">Politico</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="enquete">
+                    <ion-label style="font-size: 0.8em">Enquete</ion-label>
+                </ion-segment-button>
+                <!-- <ion-segment-button value="pauta">
+                    <ion-label style="font-size: 0.8em">Pauta</ion-label>
+                </ion-segment-button> -->
+                <ion-segment-button value="comentário">
+                    <ion-label style="font-size: 0.8em">Comentários</ion-label>
+                </ion-segment-button>
+            </ion-segment>
+        </section>
+        <section *ngIf="segmento === 'politico'" class="segmento-politico">
+            <ion-list>
+                <ion-item *ngFor="let votopolitico of usuario?.politicos">
+                    <ion-avatar slot="start">
+                        <img src="{{votopolitico?.politico?.foto_link}}">
+                    </ion-avatar>
+                    <ion-label>
+                        <h4 style="font-weight: bolder">{{votopolitico?.politico?.nome}}</h4>
+                        <p>{{votopolitico?.politico?.cargo?.titulo}} {{votopolitico?.politico?.partido?.sigla}}</p>
+                    </ion-label>
+                    <p slot="end" text-center>
+                        <span style="font-size: 0.7em">Votou</span> <br>
+                        <ion-icon *ngIf="votopolitico?.voto === 1" name="thumbs-up" color="{{votopolitico?.voto === 1 ? 'success' :  'light'}}"></ion-icon>
+                        <ion-icon *ngIf="votopolitico?.voto === 2" name="thumbs-down" color="{{votopolitico?.voto === 2 ? 'danger' :  'light'}}"></ion-icon>
+                    </p>
+                </ion-item>
+            </ion-list>
+        </section>
+        <section *ngIf="segmento === 'enquete'" class="segmento-enquete">
+            <ion-list>
+                <ion-item *ngFor="let votoenquete of usuario?.enquetes" (click)="openEnquete(votoenquete.enquete)">
+                    <ion-label>
+                        <h4 style="font-weight: bolder">{{votoenquete?.enquete?.titulo}}</h4>
+                        <p>{{votoenquete?.enquete?.descricao}}</p>
+                    </ion-label>
+                    <p slot="end" text-center>
+                        <span style="font-size: 0.7em">Votou</span> <br>
+                        <ion-icon *ngIf="votoenquete?.voto === 1" name="thumbs-up" color="{{votoenquete?.voto === 1 ? 'success' :  'light'}}"></ion-icon>
+                        <ion-icon *ngIf="votoenquete?.voto === 2" name="thumbs-down" color="{{votoenquete?.voto === 2 ? 'danger' :  'light'}}"></ion-icon>
+                    </p>
+                </ion-item>
+            </ion-list>
+        </section>
+        <section *ngIf="segmento === 'pauta'" class="segmento-pauta">
+        </section>
+        <section *ngIf="segmento === 'comentário'" class="segmento-comentário">
+            <div class="btn_botat_v2">
+                <ion-button color="success" expand="full" size="small" (click)="comentarNovo()">
+                    Deixar um comenatrio
+                </ion-button>
+            </div>
+    
+            <ion-list>
+                <ion-item *ngFor="let comentario of usuario?.comentarios" (click)="comentarAtualizar(comentario)">
+                    <ion-avatar slot="start">
+                        <img src="{{comentario?.usuario?.foto}}">
+                    </ion-avatar>
+                    <ion-label>
+                        <h3 style="font-weight: bolder">{{comentario?.usuario?.nome}}</h3>
+                        <p>{{comentario?.descricao}}</p>
+                    </ion-label>
+                    <p slot="end">
+                        {{comentario?.tempo}}
+                    </p>
+                </ion-item>
+            </ion-list>
+        </section>
+    </section>
+
+    <section class="editar-perfil" *ngIf="editar" padding>
+        <ion-row>
+            <ion-col size="4" class="upload-btn-wrapper">
+                <img src="{{usuario?.foto}}" class="foto_usuario" alt="">
+                <input type="file" name="doc" class="custom-file-input" ng2FileSelect [uploader]="uploader" (change)="uploadFoto()" />
+            </ion-col>
+            <ion-col>
+                <ion-item>
+                    <ion-label position="floating">Nome</ion-label>
+                    <ion-input [(ngModel)]="usuario.nome"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Profissao</ion-label>
+                    <ion-input [(ngModel)]="usuario.profissao"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input [(ngModel)]="usuario.email"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+            <ion-label position="floating">ideologia</ion-label>
+            <ion-textarea [(ngModel)]="usuario.ideologia"></ion-textarea>
+        </ion-item>
+
+        <br><br>
+        <ion-row>
+            <ion-col size="2"><ion-checkbox color="primary" [(ngModel)]="usuario.oculta_votos_politicos"></ion-checkbox></ion-col>
+            <ion-col>Ocultar meus votos em politícos</ion-col>
+        </ion-row>
+        <br>
+        <ion-row>
+            <ion-col size="2"><ion-checkbox color="primary" [(ngModel)]="usuario.oculta_votos_enquetes"></ion-checkbox></ion-col>
+            <ion-col>Ocultar meus votos em enquetes</ion-col>
+        </ion-row>
+        <!-- <ion-row>
+            <ion-col size="2"><ion-checkbox color="primary"></ion-checkbox></ion-col>
+            <ion-col>Ocultar meus votos em pautas</ion-col>
+        </ion-row> -->
+        
+
+        <section padding>
+            <ion-button expand="block" class="btn-twitter">
+                <ion-icon name="logo-twitter" slot="start"></ion-icon>
+                Twitter
+            </ion-button>
+            <ion-button expand="block" class="btn-facebook">
+                <ion-icon name="logo-facebook" slot="start"></ion-icon>
+                Facebook
+            </ion-button>
+            <ion-button expand="block" class="btn-instagram">
+                <ion-icon name="logo-instagram" slot="start"></ion-icon>
+                Instagram
+            </ion-button>
+        </section>
+
+        <ion-button color="success" (click)="salvar" expand="block" (click)="salvar()">
+            Salvar
+        </ion-button>
+    </section>
+</ion-content>
+

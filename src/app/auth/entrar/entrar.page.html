@@ -1,0 +1,38 @@
+
+
+
+<ion-content scroll-y="false">
+
+    <ion-button class="voltar" (click)="voltar()" fill="clear" color="light">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+  
+    <form [formGroup]="form" (ngSubmit)="logar()" class="bg-image">
+      <div class="mask" padding>
+  
+        <h2>Seja bem-vindo</h2>
+        <p class="sub-title">Entre com seus dados para acessar</p>
+        
+        <ion-row no-padding>
+          <ion-input type="email" class="input-default" name="email" formControlName="email" placeholder="Email" autocomplete="off"></ion-input>
+        </ion-row>
+
+        <ion-row no-padding>
+          <ion-input type="password" class="input-default" name="senha" formControlName="senha" placeholder="Senha" autocomplete="off"></ion-input>
+        </ion-row>
+
+        <br>
+        <ion-row no-padding>
+          <ion-col no-padding>
+            <ion-button type="submit" class="btn-default" [disabled]="!form.valid" expand="block">Entrar</ion-button>
+          </ion-col>
+        </ion-row>
+  
+        <br>
+        <p class="line">-</p>
+        <p text-center class="esqueceu-senha">Esqueceu sua senha?</p>
+        <br>
+      </div>
+    </form>
+  </ion-content>
+  

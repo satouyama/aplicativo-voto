@@ -1,0 +1,10 @@
+.max-lines {
+    display: block; /* or inline-block */
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    line-height: 1.5em;
+  max-height:7.6em;
+  line-height: 1.5em;
+  text-justify: auto;
+  }

@@ -1,0 +1,28 @@
+
+
+<app-menu-component [nog1]="true"></app-menu-component>
+<ion-content>
+  <app-mapa></app-mapa>
+
+
+  <div class="projeto-list">
+    <ion-row *ngIf="!noticias?.data">
+      <ion-col></ion-col>
+      <ion-col text-center><ion-spinner></ion-spinner></ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row no-padding no-margin *ngIf="noticias?.data">
+      <app-noticiaitem-component *ngFor="let noticia of noticias?.data" [noticia]="noticia"></app-noticiaitem-component>
+      
+
+      
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="maisprojetos($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="crescent"
+          loadingText="Aguarde...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-row>
+  </div>
+</ion-content>
+

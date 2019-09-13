@@ -1,0 +1,88 @@
+
+.noticia {
+    .autor {
+        color: #F7F7F7;
+        background: #F7F7F7;
+        margin: 0;
+        padding: 3px 0px;
+        padding-left: calc(var(--padding-start) + var(--ion-safe-area-left, 0px));
+        font-size: 0.8em;
+    }
+    ion-label {
+        font-size: 0.9em;
+    }
+    .votar {
+        --ion-button-round-border-radius: 50%;
+        --ion-button-border-radius: 50%;
+        --ion-border-radius: 50%;
+        --border-radius: 50%;
+        width: 50px;
+        font-size: 0.6em;
+        height: 50px;
+    }
+}
+
+
+
+.auto {
+    background: #F7F7F7;
+    color: #ccc;
+    font-weight: bolder;
+    margin: 0px;
+    padding: 3px 5px;
+    font-size: 0.7em;
+}
+
+.item-enquete {
+    position: relative;
+    font-size: 0.8em;
+    border-bottom: 5px solid #f1f1f1;
+
+    &.bordarazul {
+        border-bottom: 8px solid var(--ion-color-primary,#3880ff);
+    }
+}
+
+
+.btn_votar {
+    --border-radius: 50%;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1em;
+
+    &.small {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+.btn_botat_v2 {
+    margin: 0px;
+    padding: 0px;
+    ion-button {
+        margin: 0px;
+        --border-radius: 0px;
+        border-radius: 0px;
+        box-shadow: none;
+        --box-shadow:none;
+    }
+}
+
+.votev2 {
+    .votar {
+        background-color: #E6E6E6;
+        // padding: 8px 0px;
+    }
+    
+    
+    .segmento-enquetes {
+       ion-segment-button {
+            min-height: 15px;
+            ion-label {
+                margin: 2px 0px ;
+                padding: 2px 0px;
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+<app-menu-component [nog1]="true"></app-menu-component>
+<ion-content>
+        <ion-list>
+  
+            <ion-row no-padding no-margin *ngIf="noticias?.data">
+          
+                <ion-card *ngFor="let noticia of noticias?.data">
+                    <img src="{{noticia?.midia}}" />
+                    <ion-card-header>
+                      <ion-card-subtitle>{{noticia.origem}}</ion-card-subtitle>
+                      <ion-card-title>{{noticia.titulo}}</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content >
+               <p class="max-lines">  {{noticia.descricao}}</p>
+               <p align="right"><a href="{{noticia?.link}}">Saiba Mais</a></p>
+                    </ion-card-content>
+                  </ion-card>
+                <ion-infinite-scroll threshold="100px" (ionInfinite)="maisprojetos($event)">
+                    <ion-infinite-scroll-content
+                    loadingSpinner="crescent"
+                    loadingText="Aguarde...">
+                    </ion-infinite-scroll-content>
+                </ion-infinite-scroll>
+               
+              
+                
+            </ion-row>
+            
+        </ion-list>
+</ion-content>

@@ -1,0 +1,42 @@
+
+
+
+<ion-content scroll-y="false">
+
+    <ion-button class="voltar" (click)="voltar()" fill="clear" color="light">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+  
+    <form [formGroup]="form" (ngSubmit)="cadastrar()" class="bg-image">
+      <div class="mask" padding>
+  
+        <h2>Criar uma conta</h2>
+        <p class="sub-title">Entre com seus dados para acessar</p>
+        
+        <ion-row no-padding>
+          <ion-input type="text" class="input-default" name="nome" placeholder="Nome" formControlName="nome" autocomplete="off"></ion-input>
+        </ion-row>
+        
+        <ion-row no-padding>
+          <ion-input type="email" class="input-default" name="email" placeholder="Email" formControlName="email" autocomplete="off"></ion-input>
+        </ion-row>
+
+        <ion-row no-padding>
+          <ion-input type="password" class="input-default" name="senha" placeholder="Senha" formControlName="senha" autocomplete="off"></ion-input>
+        </ion-row>
+
+        <br>
+        <ion-row no-padding>
+          <ion-col no-padding>
+            <ion-button type="submit" class="btn-default" expand="block" [disabled]="!form.valid" >Cadastrar</ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div class="text-footer" padding>
+          <p class="line">-</p>
+          <p text-center class="text-footer-conta">Ja possuo uma conta?</p>  
+      </div>
+    </form>
+  </ion-content>
+
+  

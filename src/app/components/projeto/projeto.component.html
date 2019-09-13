@@ -1,0 +1,13 @@
+
+
+
+<section class="projeto">
+  <p class="autor" padding>Autor: {{projeto?.politico?.nome}}</p>
+  <ion-item>
+    <ion-label text-wrap>{{projeto?.descricao?.substring(0,100)}}</ion-label>
+    <ion-button class="votar" color="light" slot="end">
+      VOTAR
+    </ion-button>
+  </ion-item>
+</section>
+

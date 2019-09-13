@@ -1,0 +1,121 @@
+
+
+
+<ion-content>
+  
+    <section >        
+        <div class="header-usuario">
+          <div class="painel-usuario" [ngStyle]="{'background-image':'url('+politico?.foto_link+')'}">
+            <div class="mask">
+                <ion-button fill="clear" (click)="fechar()" color="light">
+                  <ion-icon name="arrow-back" style="color: rgb(75, 75, 75)"></ion-icon>
+                </ion-button>
+            </div>
+          </div>
+          <div class="info-usuario">
+            <ion-col align-self-center text-center>
+              <ion-button size="small" color="success" (click)="biografia =! biografia">Ideologia</ion-button>
+            </ion-col>
+            <ion-col class="detail-usuario" style="display: flex; justify-content: center">
+                <img class="img-usuario" src="{{politico?.foto_link}}">
+            </ion-col>
+            <ion-col align-self-center text-center>
+              <ion-button size="small" color="primary" >
+                Seguir
+                <ion-icon name="logo-rss" slot="end"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </div>
+          <div class="location-usuario">
+              <h4 text-center>{{politico?.nome}}</h4>
+              <p text-center>
+                <ion-icon name="pin"></ion-icon>
+                <span style="font-size: 0.8em">
+                    {{politico?.cargo?.titulo}}
+                    {{politico?.partido?.nome}}
+                    /{{politico?.estado?.sigla}}
+                </span>
+              </p>
+          </div>
+          <ion-row *ngIf="biografia" padding>
+            <ion-col class="ideologia-text" padding (click)="biografia =! biografia">
+                {{politico?.biografia}}
+            </ion-col>
+          </ion-row>    
+        </div>
+        <section class="segmento-enquetes">
+            <ion-segment [(ngModel)]="segmento">
+                <ion-segment-button value="politico" checked>
+                    <ion-label style="font-size: 0.8em">Politico</ion-label>
+                </ion-segment-button>
+                <!-- <ion-segment-button value="enquete">
+                    <ion-label style="font-size: 0.8em">Enquete</ion-label>
+                </ion-segment-button> -->
+                <!-- <ion-segment-button value="pauta">
+                    <ion-label style="font-size: 0.8em">Pauta</ion-label>
+                </ion-segment-button> -->
+                <ion-segment-button value="comentário">
+                    <ion-label style="font-size: 0.8em">Comentários</ion-label>
+                </ion-segment-button>
+            </ion-segment>
+        </section>
+        <section *ngIf="segmento === 'politico'" class="segmento-politico">
+            <ion-list>
+                <ion-item *ngFor="let atividade of politico?.votos">
+                    <ion-avatar slot="start">
+                        <img src="{{atividade?.foto}}">
+                    </ion-avatar>
+                    <ion-label>
+                        <h3 style="font-weight: bolder">{{atividade?.nome}}</h3>
+                        <ion-text color="{{atividade?.voto === 1 ? 'success' : atividade?.voto === 2 ? 'danger' : ''}}">
+                            <p>{{atividade?.descricao}}</p>
+                        </ion-text>
+                    </ion-label>
+                    <p slot="end">
+                        {{atividade?.tempo}}
+                    </p>
+                </ion-item>
+            </ion-list>
+        </section>
+        <section *ngIf="segmento === 'enquete'" class="segmento-enquete">
+            <ion-list>
+                <ion-item *ngFor="let votoenquete of politico?.enquetes" (click)="openEnquete(votoenquete.enquete)">
+                    <ion-label>
+                        <h4 style="font-weight: bolder">{{votoenquete?.enquete?.titulo}}</h4>
+                        <p>{{votoenquete?.enquete?.descricao}}</p>
+                    </ion-label>
+                    <p slot="end" text-center>
+                        <span style="font-size: 0.7em">Votou</span> <br>
+                        <ion-icon *ngIf="votoenquete?.voto === 1" name="thumbs-up" color="{{votoenquete?.voto === 1 ? 'success' :  'light'}}"></ion-icon>
+                        <ion-icon *ngIf="votoenquete?.voto === 2" name="thumbs-down" color="{{votoenquete?.voto === 2 ? 'danger' :  'light'}}"></ion-icon>
+                    </p>
+                </ion-item>
+            </ion-list>
+        </section>
+        <section *ngIf="segmento === 'pauta'" class="segmento-pauta">
+        </section>
+        <section *ngIf="segmento === 'comentário'" class="segmento-comentário">
+            <div class="btn_botat_v2">
+                <ion-button color="success" expand="full" size="small" (click)="comentarNovo()">
+                    Deixar um comenatrio
+                </ion-button>
+            </div>
+    
+            <ion-list>
+                <ion-item *ngFor="let comentario of politico?.comentarios" (click)="comentarAtualizar(comentario)">
+                    <ion-avatar slot="start">
+                        <img src="{{comentario?.usuario?.foto}}">
+                    </ion-avatar>
+                    <ion-label>
+                        <h3 style="font-weight: bolder">{{comentario?.usuario?.nome}}</h3>
+                        <p>{{comentario?.descricao}}</p>
+                    </ion-label>
+                    <p slot="end">
+                        {{comentario?.tempo}}
+                    </p>
+                </ion-item>
+            </ion-list>
+        </section>
+    </section>
+</ion-content>
+
