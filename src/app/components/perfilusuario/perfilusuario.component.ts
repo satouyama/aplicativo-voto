@@ -40,13 +40,18 @@ export class PerfilusuarioComponent extends GenericUtil implements OnInit {
     public params:NavParams) {
       super();
       this.usuario = this.params.get("usuario");
-      console.log(this.usuario)
          this.follow = "Seguir";
 
    }
 
    
-
+  showIdeologia(){
+    if(this.usuario.ideologia) {
+         this.ideologia = true;
+    } else{
+         this.ideologia = false;
+    }
+  }
   async ngOnInit() {
     console.log(this.usuario )
 

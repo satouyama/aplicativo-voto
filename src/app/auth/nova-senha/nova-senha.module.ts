@@ -5,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { EsqueceuPage } from './esqueceu.page';
+import { NovaSenhaPage } from './nova-senha.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: EsqueceuPage
+    component: NovaSenhaPage
   }
 ];
 
@@ -20,8 +20,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
-  declarations: [EsqueceuPage]
+  declarations: [NovaSenhaPage]
 })
-export class EsqueceuPageModule {}
+export class NovaSenhaPageModule {}

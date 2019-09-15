@@ -5,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { EsqueceuPage } from './esqueceu.page';
+import { ForgetPage } from './forget.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: EsqueceuPage
+    component: ForgetPage
   }
 ];
 
@@ -22,6 +22,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
   ],
-  declarations: [EsqueceuPage]
+  declarations: [ForgetPage]
 })
-export class EsqueceuPageModule {}
+export class ForgetPageModule {}

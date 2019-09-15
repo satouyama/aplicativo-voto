@@ -1,0 +1,37 @@
+
+
+
+<ion-content scroll-y="false">
+
+    <ion-button class="voltar" defaultHref="" routerLink="/entrar" fill="clear" color="light">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+  
+    <form [formGroup]="form" (ngSubmit)="forget()" class="bg-image">
+      <div class="mask" padding>
+  
+        <h2>Enviamos o seu código para</h2>
+        <p class="sub-title">verifique se você recebeu um e-mail</p>
+        
+
+        <ion-row no-padding>
+          <ion-input type="text" class="input-default" name="code" placeholder="Código" formControlName="code" autocomplete="off"></ion-input>
+        </ion-row>
+
+        <br>
+        <ion-row no-padding>
+          <ion-col no-padding>
+            <ion-button type="submit" class="btn-default" expand="block" [disabled]="!form.valid" >Avançar</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+              <ion-button class="btn-default" expand="block" (click)="back()">Cancelar</ion-button>
+            </ion-col>
+          </ion-row>
+      </div>
+
+      
+
+    </form>
+  </ion-content>

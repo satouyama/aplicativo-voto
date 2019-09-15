@@ -23,8 +23,11 @@
                 </ion-button>
             </div>
           </div>
-          <div class="info-usuario">
           
+          <div class="info-usuario">
+            <ion-col align-self-center text-center>
+                <ion-button size="small" color="success" (click)="showIdeologia()">Ideologia</ion-button>
+              </ion-col>
             <ion-col class="detail-usuario" style="display: flex; justify-content: center">
                 <img *ngIf="usuario.foto" class="img-usuario" src="{{usuario?.foto}}">
                 <img *ngIf="usuario.foto == null" class="img-usuario" src="../assets/default.png">
@@ -37,6 +40,9 @@
               </ion-button>
               <ion-button size="small" color="primary" *ngIf="usuario?.editar" (click)="editar =! editar">Editar</ion-button>
             </ion-col>
+
+
+            
           </div>
           <div class="location-usuario">
               <h4 text-center>{{usuario?.nome}}</h4>
@@ -47,7 +53,7 @@
               </p>
           </div>
           <ion-row *ngIf="ideologia" padding>
-            <ion-col class="ideologia-text" padding (click)="ideologia =! ideologia">
+            <ion-col class="ideologia-text" padding (click)="ideologia ==! ideologia">
                 {{usuario?.ideologia}}
             </ion-col>
           </ion-row>    
@@ -143,12 +149,15 @@
                     <ion-input [(ngModel)]="usuario.profissao"></ion-input>
                 </ion-item>
             </ion-col>
+
+            
         </ion-row>
 
         <ion-item>
             <ion-label position="floating">Email</ion-label>
             <ion-input [(ngModel)]="usuario.email"></ion-input>
         </ion-item>
+        
         
         <ion-item>
             <ion-label position="floating">ideologia</ion-label>

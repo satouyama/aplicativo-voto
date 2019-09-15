@@ -1,22 +1,22 @@
+
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RestService } from 'src/app/providers/rest/rest';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { LoadingController, ToastController, NavParams, NavController } from '@ionic/angular';
 import { AuthenticationService } from 'src/app/providers/auth/authentication.service';
 import { User } from 'src/app/model/user';
-
 @Component({
-  selector: 'app-cadastro',
-  templateUrl: './cadastro.page.html',
-  styleUrls: ['./cadastro.page.scss'],
+  selector: 'app-nova-senha',
+  templateUrl: './nova-senha.page.html',
+  styleUrls: ['./nova-senha.page.scss'],
 })
-export class CadastroPage implements OnInit {
+export class NovaSenhaPage implements OnInit {
 
   form: FormGroup;
   authState: any;
-
+  public email : any;
   constructor(
     private router: Router,
     private rest:RestService, 
@@ -24,44 +24,49 @@ export class CadastroPage implements OnInit {
     private load:LoadingController, 
     private authService: AuthenticationService,
     private toast: ToastController,
-    ) { }
+    private activate : ActivatedRoute,
+    private navCtrl : NavController
+    ) { 
+
+    }
 
   async ngOnInit() {
-    this.createForm(new User());
+    new User();
+  
   }
  
-  createForm(user: User) {
-    this.form = new FormGroup({
-      nome: new FormControl(user.nome,Validators.required),
-      email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      senha: new FormControl(user.senha,Validators.required),
-    })
+  newPassword(user: User) {
+   console.log(user);
   }
 
-  async cadastrar() {
+
+  async NovaSenha(){
+    var data = {
+      codigo_verificacao : this.form.value.codigo,
+      email : this.email
+    }
     let load = await this.load.create({
       message : 'Aguarde...'
     });
     load.present();
-    this.form.value.perfil_id = 3;
-    this.rest.post(`auth/cadastrar`,this.form.value)
+    this.rest.post(`confirma-codigo`, data)
     .subscribe((dados:any) => {
+      if(dados.status === "sucess") {
+        
+      }
       load.dismiss();
       this.form.reset(new User());
-      this.authService.login(dados.data);
-      this.router.navigate(['home/destaques']);
     },async error => {
       let toast = await this.toast.create({message : error.error.mensagem,duration: 3000});
       await toast.present();
       load.dismiss();
     })
- 
   }
 
-  voltar() {
-    this.location.back();
+  back(){
+ this.navCtrl.navigateRoot('/entrar')
   }
+
+
+
 }

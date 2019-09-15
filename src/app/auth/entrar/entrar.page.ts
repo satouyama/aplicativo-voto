@@ -32,7 +32,10 @@ export class EntrarPage implements OnInit {
  
   createForm(user: User) {
     this.form = new FormGroup({
-      email: new FormControl(user.email,Validators.required),
+    	email: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
       senha: new FormControl(user.senha,Validators.required),
     })
   }
@@ -59,6 +62,9 @@ export class EntrarPage implements OnInit {
 
   voltar () {
     this.location.back();
+  }
+  forget(){
+    this.router.navigate(['/esqueceu'])
   }
 
 }

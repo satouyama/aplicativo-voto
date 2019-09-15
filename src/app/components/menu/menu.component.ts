@@ -5,6 +5,9 @@ import { RestService } from 'src/app/providers/rest/rest';
 import { PerfilusuarioComponent } from '../perfilusuario/perfilusuario.component';
 import { Storage } from '@ionic/storage';
 import { HookService } from 'src/app/providers/hook/hook';
+import { ListaComponent } from '../lista/lista.component';
+
+
 
 @Component({
   selector: 'app-menu-component',
@@ -40,6 +43,8 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['home/destaques'])
   }
 
+
+
   async meuPerfil () {
     let load = await this.load.create({
       message : 'Aguarde...'
@@ -60,4 +65,14 @@ export class MenuComponent implements OnInit {
       load.dismiss();
     })
   }
+     
+   async presentModal($event) {
+    let modal = await this.modal.create({
+      component: ListaComponent
+    });
+    modal.present();
+  }
+
 }
+
+

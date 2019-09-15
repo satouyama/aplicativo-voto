@@ -48,6 +48,10 @@ export class AuthenticationService {
   async userAuth() {
     return await this.storage.get('votabrasil:auth');
   }
+
+  forget(email){
+    this.storage.set("email", email);
+  }
  
   isAuthenticated() {
     return this.authenticationState.value;

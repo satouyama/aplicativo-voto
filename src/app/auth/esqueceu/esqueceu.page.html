@@ -1,9 +1,36 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>esqueceu</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
 
-</ion-content>
+
+<ion-content scroll-y="false">
+
+    <ion-button class="voltar" (click)="voltar()" fill="clear" color="light">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+  
+    <form [formGroup]="form" (ngSubmit)="forget()" class="bg-image">
+      <div class="mask" padding>
+  
+        <h2>Recuperar conta</h2>
+        <p class="sub-title">Entre com seu e-mail para recuperar</p>
+
+        
+        <ion-row no-padding>
+          <ion-input type="email" class="input-default" name="email" placeholder="Email" formControlName="email" autocomplete="off"></ion-input>
+        </ion-row>
+
+
+        <br>
+        <ion-row no-padding>
+          <ion-col no-padding>
+            <ion-button type="submit" class="btn-default" expand="block" [disabled]="!form.valid" >Recuperar</ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div class="text-footer" (click)="voltar()" padding>
+          <p class="line">-</p>
+          <p text-center class="text-footer-conta">Já possui uma conta?</p>  
+      </div>
+    </form>
+  </ion-content>
+
+  

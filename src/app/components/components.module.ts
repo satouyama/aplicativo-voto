@@ -15,6 +15,7 @@ import { EnqueteitemComponent } from '../home/enquetes/components/enqueteitem/en
 import { PerfilusuariocomentarioComponent } from './perfilusuariocomentario/perfilusuariocomentario.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { PerfilpoliticocomentarioComponent } from './perfilpoliticocomentario/perfilpoliticocomentario.component';
+import { ListaComponent } from './lista/lista.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PerfilpoliticocomentarioComponent } from './perfilpoliticocomentario/pe
     PerfilusuarioComponent,
     PerfilusuariocomentarioComponent,
     PerfilpoliticoComponent,
-    PerfilpoliticocomentarioComponent
+    PerfilpoliticocomentarioComponent,
+    ListaComponent
   ],
   entryComponents:[
     MenuComponent,
@@ -43,7 +45,8 @@ import { PerfilpoliticocomentarioComponent } from './perfilpoliticocomentario/pe
     PerfilusuarioComponent,
     PerfilusuariocomentarioComponent,
     PerfilpoliticoComponent,
-    PerfilpoliticocomentarioComponent
+    PerfilpoliticocomentarioComponent,
+    ListaComponent
   ],
   imports: [
     CommonModule,
@@ -64,7 +67,8 @@ import { PerfilpoliticocomentarioComponent } from './perfilpoliticocomentario/pe
     PerfilusuarioComponent,
     PerfilusuariocomentarioComponent,
     PerfilpoliticoComponent,
-    PerfilpoliticocomentarioComponent
+    PerfilpoliticocomentarioComponent,
+    ListaComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
