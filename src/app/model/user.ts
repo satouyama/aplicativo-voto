@@ -4,7 +4,7 @@ export class User {
     nome:string = null;
     email:string = null;
     senha:string = null;
-    newSenha : string = null
+    senha2 : string = null
     created_at:Date = null;
     updated_at:Date = null;
     code : number = null;

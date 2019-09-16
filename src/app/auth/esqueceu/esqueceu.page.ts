@@ -54,10 +54,8 @@ export class EsqueceuPage implements OnInit {
       this.navigate.navigateForward(`forget/${this.form.value.email}`);
       load.dismiss();
       this.form.reset(new User());
-   
-
     },async error => {
-      let toast = await this.toast.create({message : error.error.mensagem,duration: 3000});
+      let toast = await this.toast.create({message : "E-mail não existe",duration: 4000});
       await toast.present();
       load.dismiss();
     })

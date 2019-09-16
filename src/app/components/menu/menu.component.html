@@ -35,7 +35,7 @@
             <p class="text">Telegram avisou Alexandre de Morais</p>
         </ion-col>
     </ion-row>
-    <div class="menu-default-search">
+    <div class="menu-default-search bloco" *ngIf="!ishidden">
         <ion-searchbar placeholder="Pesquise por nome, cargo ou estado" (click)="presentModal($event)" no-boxshadow></ion-searchbar>
     </div>
 </ion-header>

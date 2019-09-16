@@ -16,7 +16,7 @@ export class NovaSenhaPage implements OnInit {
 
   form: FormGroup;
   authState: any;
-  public email : any;
+ public email : any;
   constructor(
     private router: Router,
     private rest:RestService, 
@@ -24,43 +24,56 @@ export class NovaSenhaPage implements OnInit {
     private load:LoadingController, 
     private authService: AuthenticationService,
     private toast: ToastController,
-    private activate : ActivatedRoute,
-    private navCtrl : NavController
-    ) { 
-
-    }
+    private navCtrl : NavController,
+    private activate : ActivatedRoute
+    ) { }
 
   async ngOnInit() {
-    new User();
-  
+    this.createForm(new User());
+    this.email = this.activate.snapshot.paramMap.get("email");
   }
  
-  newPassword(user: User) {
-   console.log(user);
+  createForm(user: User) {
+    this.form = new FormGroup({
+      senha: new FormControl(user.senha,Validators.required),
+      senha2 : new FormControl(user.senha2,Validators.required),
+    })
   }
 
 
-  async NovaSenha(){
-    var data = {
-      codigo_verificacao : this.form.value.codigo,
-      email : this.email
-    }
-    let load = await this.load.create({
-      message : 'Aguarde...'
-    });
-    load.present();
-    this.rest.post(`confirma-codigo`, data)
-    .subscribe((dados:any) => {
-      if(dados.status === "sucess") {
-        
+  async novaSenha(){
+      var data = {
+        senha : this.form.value.senha,
+        confirma_senha : this.form.value.senha2,
+        email : this.email
       }
-      load.dismiss();
-      this.form.reset(new User());
-    },async error => {
-      let toast = await this.toast.create({message : error.error.mensagem,duration: 3000});
+
+
+    if(this.form.value.senha !== this.form.value.senha2 ){  
+      let toast = await this.toast.create({message :"As senhas não conferem",duration: 3500});
       await toast.present();
-      load.dismiss();
-    })
+ 
+    } else {
+
+
+      let load = await this.load.create({
+        message : 'Aguarde...'
+      });
+      load.present();
+      this.rest.post(`atualiza-senha`, data)
+      .subscribe(async (dados:any) => {
+          this.router.navigate([`login`]);
+          let toast = await this.toast.create({message :"Senha atualizada com sucesso!",duration: 3500});
+          await toast.present();
+          load.dismiss();
+        this.form.reset(new User());
+      },async error => {
+        let toast = await this.toast.create({message : error.error.mensagem,duration: 3000});
+        await toast.present();
+        load.dismiss();
+      })
+    }
+
   }
 
   back(){

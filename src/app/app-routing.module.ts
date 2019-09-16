@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: 'iniciativas', loadChildren: './home/iniciativas/iniciativas.module#IniciativasPageModule' },
   { path: 'enquetes', loadChildren: './home/enquetes/enquetes.module#EnquetesPageModule' },
   { path: 'midia', loadChildren: './home/midia/midia.module#MidiaPageModule' },
-  { path: 'forget/:email', loadChildren: './auth/forget/forget.module#ForgetPageModule'},  { path: 'nova-senha', loadChildren: './auth/nova-senha/nova-senha.module#NovaSenhaPageModule' }
+  { path: 'forget/:email', loadChildren: './auth/forget/forget.module#ForgetPageModule'},
+  { path: 'nova-senha/:email', loadChildren: './auth/nova-senha/nova-senha.module#NovaSenhaPageModule' }
 
 
 

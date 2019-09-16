@@ -1,9 +1,38 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>NovaSenha</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
 
+
+<ion-content scroll-y="false">
+
+  <ion-button class="voltar" (click)="back()" fill="clear" color="light">
+    <ion-icon name="arrow-back"></ion-icon>
+  </ion-button>
+
+  <form [formGroup]="form" (ngSubmit)="novaSenha()" class="bg-image">
+    <div class="mask" padding>
+
+      <h2>Nova Senha</h2>
+      <p class="sub-title">Digite sua nova senha</p>
+      
+    
+
+      <ion-row no-padding>
+        <ion-input type="password" class="input-default" name="senha" formControlName="senha" placeholder="Senha" autocomplete="off"></ion-input>
+      </ion-row>
+      
+      <ion-row no-padding>
+        <ion-input type="password" class="input-default" name="senha2" formControlName="senha2" placeholder="Digite a senha novamente" autocomplete="off"></ion-input>
+      </ion-row>
+
+      <br>
+      <ion-row no-padding>
+        <ion-col no-padding>
+          <ion-button type="submit" class="btn-default" [disabled]="!form.valid" expand="block">Cadastrar</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <br>
+    
+      <br>
+    </div>
+  </form>
 </ion-content>

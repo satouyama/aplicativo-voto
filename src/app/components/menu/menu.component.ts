@@ -13,12 +13,15 @@ import { ListaComponent } from '../lista/lista.component';
   selector: 'app-menu-component',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
-  inputs:['nog1']
+  inputs:['nog1', 'ishidden']
 })
 export class MenuComponent implements OnInit {
-
-  public nog1:any;
+ // essa variavel aparece a div do g1
+  public nog1 : any;
+  // essa variavel vai verificar se é para aparecer a barra de pesquisa
+  public ishidden: any;
   public usuario:any;
+ 
   constructor(
     public modal:ModalController,
     private rest:RestService, 
@@ -28,7 +31,6 @@ export class MenuComponent implements OnInit {
     public router:Router) { 
       this.storage.get('votabrasil:auth').then((usuario) => {
         this.usuario = usuario;
-        console.log(this.usuario);
       });
     }
 

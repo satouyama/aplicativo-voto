@@ -7,8 +7,9 @@
     </ion-buttons>
     <ion-title texte-center>Pesquisar</ion-title> 
   </ion-toolbar>
+  <app-menu-component [nog1]="true" [ishidden]="true" ></app-menu-component>
   <div class="menu-default-search">
-    <ion-searchbar placeholder="Pesquise por nome, cargo ou estado" (ionChange)="teste($event)" no-boxshadow></ion-searchbar>
+    <ion-searchbar placeholder="Pesquise por nome, cargo ou estado" (ionChange)="searchUser($event)" no-boxshadow></ion-searchbar>
   </div>
 </ion-header>
 

@@ -46,23 +46,30 @@ export class ForgetPage implements OnInit {
   }
 
   async forget(){
+
     var data = {
-      codigo_verificacao : this.form.value.codigo,
+      codigo_verificacao : this.form.value.code,
       email : this.email
     }
+
     let load = await this.load.create({
       message : 'Aguarde...'
     });
     load.present();
     this.rest.post(`confirma-codigo`, data)
     .subscribe(async (dados:any) => {
-      console.log(dados);
-
-        this.router.navigate(['nova-senha'])
-        console.log("sucesso")
-      load.dismiss();
-      this.form.reset(new User());
+      console.log(dados)
+      if(dados.status === "success"){
+         this.router.navigate([`nova-senha/${data.email}`])
+         load.dismiss();
+        this.form.reset(new User());
+      } else {
+        load.dismiss();
+        let toast = await this.toast.create({message : "Codigo de verificação inváldo",duration: 3000});
+        await toast.present();
+      }
     },async error => {
+      console.log(error)
       let toast = await this.toast.create({message : error.error.mensagem,duration: 3000});
       await toast.present();
       load.dismiss();
